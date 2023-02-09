@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R --preserve-root ugo+x .
+find . -type d -exec chmod -R  ugo+x .
