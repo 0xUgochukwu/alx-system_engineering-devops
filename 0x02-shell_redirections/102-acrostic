@@ -1,2 +1,2 @@
 #!/bin/bash
-tr -d '\n' < "$1" | fold -w1 | while read -r char; do echo "$char"; done
+echo -ne $(cut -c-1 | tr -d '\n')'\n
