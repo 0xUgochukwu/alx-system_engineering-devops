@@ -1,0 +1,2 @@
+#!/bin/bash
+tr -d '\n' < "$1" | fold -w1 | while read -r char; do echo "$char"; done
