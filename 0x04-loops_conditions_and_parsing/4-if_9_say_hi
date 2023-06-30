@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# mastering my conditionals 
+
+i=1
+
+until [ $i -gt 10 ]
+do
+	if [ $i -eq 9 ]; then
+		echo -e "Best School\nHi"
+	else
+		echo "Best School"
+	fi
+	((i++))
+done
