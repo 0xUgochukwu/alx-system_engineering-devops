@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# mastering my for loop skills
+
+LIST="$(ls -1)"
+
+for i in $LIST
+do
+	echo $i | cut -d'-' -f2
+done
