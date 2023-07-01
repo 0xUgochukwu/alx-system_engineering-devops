@@ -2,8 +2,8 @@
 # Display text till infinity
 
 # handle signal
-# trap "echo 'I am invincible!!!'" SIGTERM
-trap "echo 'I am invincible!!!'" 15 
+trap "echo 'I am invincible!!!'" SIGTERM
+# trap "echo 'I am invincible!!!'" 15
 
 
 while :
