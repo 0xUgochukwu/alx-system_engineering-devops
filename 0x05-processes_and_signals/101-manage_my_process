@@ -9,6 +9,7 @@ create()
     sudo bash -c "echo $$ > $FILE"
 }
 
+# handle arguments
 if [ "$1" == "start" ]; then
     create
     ./manage_my_process &
