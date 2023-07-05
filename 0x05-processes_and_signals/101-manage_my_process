@@ -1,23 +1,43 @@
 #!/usr/bin/env bash
-# Does alot.
+#init script for `manage_my_process` process
 
-process="/var/run/my_process.pid"
+argument="$1";
 
-start () {
-	./manage_my_process& echo $! > $process
-	}
-
-stop () {
-	if [ -e "$process" ]
-	then
-		pid=$(cat "$process")
-		kill "$pid" && rm $process
-	fi
+function start(){
+    ./manage_my_process;
+    "pgrep -f manage_my_process" >> "/var/run/my_process.pid";
+    echo "manage_my_process started";
 }
 
-case $1 in
-	"start")start && echo "manage_my_process started";;
-	"stop")stop && echo "manage_my_process stopped";;
-	"restart")stop && start && echo "manage_my_process restarted";;
-	*)echo "Usage: manage_my_process {start|stop|restart}";;
-esac
+function stop(){
+    kill -9 "$(pgrep -f manage_my_process )";
+    rm "/var/run/my_process.pid";
+    echo "manage_my_process stopped";
+}
+
+function restart(){
+    kill -9 "$(pgrep -f manage_my_process)";
+    rm "/var/run/my_process.pid";
+    ./manage_my_process;
+    "pgrep -f manage_my_process" >> "/var/run/my_process.pid";
+    echo "manage_my_process restarted";
+}
+
+function usage(){
+    echo "Usage: manage_my_process {start|stop|restart}";
+}
+
+
+if [ -n "$argument" ]; then
+    if [ "$argument" == "start" ]; then 
+        start;
+    elif [ "$argument" == "stop" ]; then 
+        stop;
+    elif [ "$argument" == "restart" ]; then 
+        restart;
+    else
+        usage;
+    fi
+else
+    usage;
+fi
