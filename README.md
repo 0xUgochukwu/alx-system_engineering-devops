@@ -1,3 +1,3 @@
 # ALX SE
 
-## Systems Engineering / Devops Basics
+## Systems Engineering / Devops
