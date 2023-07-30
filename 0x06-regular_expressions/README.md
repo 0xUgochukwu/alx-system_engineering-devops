@@ -1,5 +1,5 @@
 # ALX SE
 
-## Systems Engineering / Devops Basics
+## Systems Engineering / Devops
 
-### Processes and signals 
+### Processes and Signals 
