@@ -31,7 +31,7 @@ file { '/etc/nginx/sites-available/default':
   ensure  => file,
   require => Package['nginx']
 }-> exec { 'Replace config':
-  command => "/usr/bin/curl ${location} > ${file_url}"
+  command => "/usr/bin/curl ${file_url} > ${location}"
 }
 
 # Start nginx service
