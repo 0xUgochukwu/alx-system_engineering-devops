@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Fix APache Server
+# Fix Apache Server
 
 service apache2 start
