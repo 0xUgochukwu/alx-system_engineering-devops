@@ -4,8 +4,9 @@
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 sudo sed -i '/#EXTRAOPTS="-de -m 16"/a ENABLED=1' /etc/default/haproxy
-sudo sed -i '/errorfile 504/a listen pantheon  0.0.0.0:80' /etc/haproxy/haproxy.cfg
-sudo sed -i '/listen pantheon  0.0.0.0:80/a \\tmode http' /etc/haproxy/haproxy.cfg
+sudo sed -i '/errorfile 504/a listen pantheon' /etc/haproxy/haproxy.cfg
+sudo sed -i '/listen pantheon/a \\tbind :80' /etc/haproxy/haproxy.cfg
+sudo sed -i '/bind :80/a \\tmode http' /etc/haproxy/haproxy.cfg
 sudo sed -i '/mode http/a \\tserver 269908-web-01 54.152.30.192:80 check' /etc/haproxy/haproxy.cfg
 sudo sed -i '/server 269908-web-01 54.152.30.192:80 check/a \\tserver 269908-web-02 54.144.155.174:80 check' /etc/haproxy/haproxy.cfg
 sudo service haproxy start
