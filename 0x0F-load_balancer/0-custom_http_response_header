@@ -9,11 +9,10 @@ default_sites="/etc/nginx/sites-available/default"
 line=$(grep -Fn location $default_sites | head -1 | cut -d":" -f1)
 replace_w="\\\tlocation /redirect_me {\n\t\treturn 301 http://ugochukwu.tech;\n\t}\n\n"
 error_page="\\\terror_page 404 /404.html;\n"
-custom_header="\\\tadd_header X-Served-By $hostname;\n"
 
 echo "Ceci n'est pas une page" | sudo tee "/var/www/html/404.html"
 
 sudo sed -i "${line}i ${replace_w}" ${default_sites}
 sudo sed -i "${line}i ${error_page}" ${default_sites}
-sudo sed -i "${line}i ${custom_header}" ${default_sites}
+sudo sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
 sudo service nginx start
