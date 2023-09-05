@@ -3,6 +3,8 @@
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
+
+sudo service nginx start
 echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
 
 default_sites="/etc/nginx/sites-available/default"
@@ -16,4 +18,4 @@ echo "Ceci n'est pas une page" | sudo tee "/var/www/html/404.html"
 sudo sed -i "${line}i ${replace_w}" ${default_sites}
 sudo sed -i "${line}i ${error_page}" ${default_sites}
 sudo sed -i "${line}i ${custom_header}" ${default_sites}
-sudo service nginx start
+sudo service nginx restart
