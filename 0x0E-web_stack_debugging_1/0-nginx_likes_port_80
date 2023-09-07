@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fix the Server - create symlinc b/w default files and start nginx service
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
