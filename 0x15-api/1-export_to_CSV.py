@@ -4,7 +4,8 @@
     for a given employee ID,
     returns information about his/her TODO list progress
 """
-import requests, csv
+import requests
+import csv
 from sys import argv
 
 
@@ -18,12 +19,12 @@ def export_progress(emp_id):
     todos = requests.get(f"{BASE_URL}/todos?userId={emp_id}").json()
 
     with open(f"{emp_id}.csv", 'w', encoding='UTF8') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
 
         for todo in todos:
             row = []
             row.append(str(emp_id))
-            row.append(user["name"])
+            row.append(user["username"])
             row.append(str(todo["completed"]))
             row.append(todo["title"])
 
