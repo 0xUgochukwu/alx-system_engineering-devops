@@ -22,7 +22,8 @@ def get_progress(emp_id):
     print(f"Employee {user['name']} is done with tasks({done}/{len(todos)}):")
 
     for todo in todos:
-        print(f"\t {todo['title']}")
+        if todo['completed']:
+            print(f"\t {todo['title']}")
 
 
 if __name__ == '__main__':
