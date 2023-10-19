@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# gracefully reload gunicorn workers
+# Gracefully reloads Gunicorn workers.
 
-pgrep -f 'gunicorn' | xargs -I {} kill -HUP {}
+pkill -HUP -f "gunicorn"
